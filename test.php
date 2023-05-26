@@ -22,7 +22,7 @@ class Layer_slice {
 
     function backpropogation($inputs, $expcted_output) {
         $output = $this->feedForward($inputs);
-        $error =  ($expcted_output - $output);
+        $error =  ($output - $expcted_output);
         $this->cost += pow($error,2);
         $this->bias = $this->bias - $this->learning_rate * ($error);
         foreach($inputs as $key => $input) {
