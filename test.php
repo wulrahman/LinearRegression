@@ -57,11 +57,20 @@ class Layer {
     }
 }
 
-$network = new Layer(2, 2, 0.001);
+$network = new Layer(1, 10, 0.01);
 for ($i = 0; $i < 1000; $i++) {
-    $network->backpropogation([1, 1], [1, 1]);
-    $network->backpropogation([0, 1], [0, 0]);
-    $network->backpropogation([1, 0], [0, 0]);
-    $network->backpropogation([0, 0], [0, 0]);
+    $network->backpropogation([1], [1, 2, 3, 4, 5, 6, 7, 8 ,9 ,10]);
+    $network->backpropogation([2], [0, 2, 3, 4, 5, 6, 7, 8 ,9 ,10]);
+    $network->backpropogation([3], [0, 0, 3, 4, 5, 6, 7, 8 ,9 ,10]);
+    $network->backpropogation([4], [0, 0, 0, 4, 5, 6, 7, 8 ,9 ,10]);
 }
-print_r($network->predict([1, 1]));
+print_r($network->predict([5]));
+
+$network2 = new Layer(2, 2, 0.01);
+for ($i = 0; $i < 1000; $i++) {
+    $network2->backpropogation([1, 1], [1, 1]);
+    $network2->backpropogation([0, 1], [0, 0]);
+    $network2->backpropogation([1, 0], [0, 0]);
+    $network2->backpropogation([0, 0], [0, 0]);
+}
+print_r($network2->predict([1, 1]));
